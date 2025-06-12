@@ -51,7 +51,7 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onSuccess }) => {
         applicationDeadline: formData.applicationDeadline?.toISOString().split('T')[0] || '',
       };
 
-      const res = await fetch('http://localhost:5000/job', {
+      const res = await fetch('${process.env.NEXT_PUBLIC_API_BASE_URL}/job', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

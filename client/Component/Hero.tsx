@@ -29,7 +29,7 @@ const Hero: FC = () => {
 
   const fetchJobs = async () => {
     try {
-      const res = await fetch('http://localhost:5000/job');
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/job`);
       const data = await res.json();
       setJobs(data);
     } catch (err) {
@@ -41,7 +41,7 @@ const Hero: FC = () => {
 
   const handleDelete = async (id: number) => {
     try {
-      const res = await fetch(`http://localhost:5000/job/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/job/${id}`, {
         method: 'DELETE',
       });
       if (res.ok) {
