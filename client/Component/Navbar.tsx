@@ -43,21 +43,22 @@ const Navbar: FC = () => {
 
             <Group gap={32} h={48}>
               <Link href="/" passHref>
-                <Text component="a" c="black" fw={500} style={{ textDecoration: 'none' }}>Home</Text>
+                <a style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Home</a>
               </Link>
               <Link href="/jobs" passHref>
-                <Text component="a" c="black" fw={500} style={{ textDecoration: 'none' }}>Find Jobs</Text>
+                <a style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Find Jobs</a>
               </Link>
               <Link href="/talents" passHref>
-                <Text component="a" c="black" fw={500} style={{ textDecoration: 'none' }}>Find Talents</Text>
+                <a style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Find Talents</a>
               </Link>
               <Link href="/about" passHref>
-                <Text component="a" c="black" fw={500} style={{ textDecoration: 'none' }}>About us</Text>
+                <a style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>About us</a>
               </Link>
               <Link href="/testimonials" passHref>
-                <Text component="a" c="black" fw={500} style={{ textDecoration: 'none' }}>Testimonials</Text>
+                <a style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Testimonials</a>
               </Link>
             </Group>
+
 
 
 
