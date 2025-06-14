@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && tsc && cp -R prisma dist/prisma && cp package.json dist/",
+  "build": "rimraf dist && tsc && mkdir -p dist/prisma && cp prisma/schema.prisma dist/prisma/ && cp -R prisma/migrations dist/prisma/ && cp package.json dist/",
   "start": "node dist/src/index.js",
-  "prisma:migrate": "prisma migrate deploy --schema=dist/prisma/schema.prisma",
-  "render:build": "npm install && npm run build",
+  "prisma:migrate": "cd dist && PRISMA_SCHEMA_PATH=./prisma/schema.prisma npx prisma migrate deploy",
+  "render:build": "npm install && npm run build && cd dist && npm install --production && npx prisma generate",
   "render:start": "npm run prisma:migrate && npm start"
-  },
+},
   "author": "",
   "license": "ISC",
   "description": "",
