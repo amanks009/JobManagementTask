@@ -54,9 +54,8 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onSuccess }) => {
         ...formData,
         applicationDeadline:
           deadlineDate && !isNaN(deadlineDate.getTime())
-            ? deadlineDate.toISOString()
+            ? deadlineDate.toISOString() // ✅ full ISO date
             : null,
-
       };
   
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/job`, {
@@ -89,6 +88,7 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onSuccess }) => {
       alert('Server error!');
     }
   };
+  
   
   const locationOptions = [
     'Remote',
