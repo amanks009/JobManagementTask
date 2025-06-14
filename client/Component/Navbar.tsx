@@ -42,12 +42,23 @@ const Navbar: FC = () => {
             </Link>
 
             <Group gap={32} h={48}>
-              <Link href="/" style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Home</Link>
-              <Link href="/jobs" style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Find Jobs</Link>
-              <Link href="/talents" style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Find Talents</Link>
-              <Link href="/about" style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>About us</Link>
-              <Link href="/testimonials" style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Testimonials</Link>
+              <Link href="/" passHref>
+                <Text component="a" c="black" fw={500} style={{ textDecoration: 'none' }}>Home</Text>
+              </Link>
+              <Link href="/jobs" passHref>
+                <Text component="a" c="black" fw={500} style={{ textDecoration: 'none' }}>Find Jobs</Text>
+              </Link>
+              <Link href="/talents" passHref>
+                <Text component="a" c="black" fw={500} style={{ textDecoration: 'none' }}>Find Talents</Text>
+              </Link>
+              <Link href="/about" passHref>
+                <Text component="a" c="black" fw={500} style={{ textDecoration: 'none' }}>About us</Text>
+              </Link>
+              <Link href="/testimonials" passHref>
+                <Text component="a" c="black" fw={500} style={{ textDecoration: 'none' }}>Testimonials</Text>
+              </Link>
             </Group>
+
 
 
             <Button
