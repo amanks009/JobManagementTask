@@ -54,8 +54,9 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onSuccess }) => {
         ...formData,
         applicationDeadline:
           deadlineDate && !isNaN(deadlineDate.getTime())
-            ? deadlineDate.toISOString().split('T')[0]
-            : '',
+            ? deadlineDate.toISOString()
+            : null,
+
       };
   
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/job`, {
