@@ -38,7 +38,7 @@ const Navbar: FC = () => {
         <Container size="xl" h="100%" py="md">
           <Flex justify="center" align="center" gap={68}>
             <Link href="/">
-              <Image src="/logo.png" alt="Logo" width={44} height={44.67} style={{ marginTop: '1.66px' }} />
+              <Image src="/logo2.png" alt="Logo" width={44} height={44.67} style={{ marginTop: '1.66px' }} />
             </Link>
 
             <Group gap={32} h={48}>
