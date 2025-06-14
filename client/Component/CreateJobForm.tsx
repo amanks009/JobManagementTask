@@ -44,21 +44,28 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onSuccess }) => {
       alert("Please fill in all required fields.");
       return;
     }
-
+  
     try {
+      const deadlineDate = formData.applicationDeadline
+        ? new Date(formData.applicationDeadline)
+        : null;
+  
       const submitData = {
         ...formData,
-        applicationDeadline: formData.applicationDeadline?.toISOString().split('T')[0] || '',
+        applicationDeadline:
+          deadlineDate && !isNaN(deadlineDate.getTime())
+            ? deadlineDate.toISOString().split('T')[0]
+            : '',
       };
-
-      const res = await fetch('${process.env.NEXT_PUBLIC_API_BASE_URL}/job', {
+  
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/job`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(submitData),
       });
-
+  
       if (res.ok) {
         if (onSuccess) onSuccess();
         alert('Job Published!');
@@ -77,11 +84,11 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onSuccess }) => {
         alert('Error publishing job: ' + errorData.message);
       }
     } catch (error) {
-      console.error(error);
-      alert('Server error.');
+      console.log(error);
+      alert('Server error!');
     }
   };
-
+  
   const locationOptions = [
     'Remote',
     'Onsite',
