@@ -42,12 +42,13 @@ const Navbar: FC = () => {
             </Link>
 
             <Group gap={32} h={48}>
-              <Link href="/">Home</Link>
-              <Link href="/jobs">Find Jobs</Link>
-              <Link href="/talents">Find Talents</Link>
-              <Link href="/about">About us</Link>
-              <Link href="/testimonials">Testimonials</Link>
+              <Link href="/" style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Home</Link>
+              <Link href="/jobs" style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Find Jobs</Link>
+              <Link href="/talents" style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Find Talents</Link>
+              <Link href="/about" style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>About us</Link>
+              <Link href="/testimonials" style={{ textDecoration: 'none', color: 'black', fontWeight: 500 }}>Testimonials</Link>
             </Group>
+
 
             <Button
               radius={30}
