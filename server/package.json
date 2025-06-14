@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && cp -R prisma dist/prisma",
+    "build": "tsc && cpx \"prisma/**/*\" dist/prisma",
     "start": "node dist/index.js",
     "prisma:migrate": "npx prisma migrate deploy",
     "render:build": "npm install && npm run build",
