@@ -1,7 +1,15 @@
 'use client';
 
 import { FC, useEffect, useState } from 'react';
-import { Container, SimpleGrid, Loader, Text } from '@mantine/core';
+import {
+  Container,
+  SimpleGrid,
+  Loader,
+  Text,
+  Center,
+  rem,
+} from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import JobCard from './JobCard';
 
 interface ApiJob {
@@ -16,12 +24,13 @@ interface ApiJob {
   description: string;
   createdAt: string;
   updatedAt: string;
-  logo: string; // added logo field
+  logo: string;
 }
 
 const Hero: FC = () => {
   const [jobs, setJobs] = useState<ApiJob[]>([]);
   const [loading, setLoading] = useState(true);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     fetchJobs();
@@ -56,29 +65,45 @@ const Hero: FC = () => {
 
   if (loading) {
     return (
-      <Container size="xl" py="xl" style={{ textAlign: 'center' }}>
-        <Loader size="lg" />
-        <Text mt="sm">Loading jobs…</Text>
+      <Container size="xl" py="xl">
+        <Center style={{ flexDirection: 'column' }}>
+          <Loader size="lg" />
+          <Text mt="sm" size={isMobile ? 'sm' : 'md'}>
+            Loading jobs…
+          </Text>
+        </Center>
       </Container>
     );
   }
 
   if (jobs.length === 0) {
     return (
-      <Container size="xl" py="xl" style={{ textAlign: 'center' }}>
-        <Text>No jobs found.</Text>
+      <Container size="xl" py="xl">
+        <Center>
+          <Text size={isMobile ? 'sm' : 'md'}>No jobs found.</Text>
+        </Center>
       </Container>
     );
   }
 
   return (
-    <Container size="xl" py="xl">
-      <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="md">
+    <Container
+      size="xl"
+      py={isMobile ? rem(16) : rem(32)}
+      style={{
+        overflowY: 'auto',
+      }}
+    >
+      <SimpleGrid
+        cols={{ base: 1, sm: 2, md: 3, lg: 4 }}
+        spacing="md"
+        verticalSpacing="lg"
+      >
         {jobs.map((job) => (
           <JobCard
             key={job.id}
             id={job.id}
-            logo={`/private/${job.logo}`} // updated to use dynamic logo
+            logo={`/private/${job.logo}`}
             postedAgo={getPostedAgo(job.createdAt)}
             title={job.title}
             experience="N/A"

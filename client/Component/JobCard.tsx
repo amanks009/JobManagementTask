@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import {
   Box,
   Text,
@@ -39,6 +39,10 @@ const JobCard: FC<JobCardProps> = ({
   description,
   onDelete,
 }) => {
+  // Ensure logo path starts with '/'
+  const normalizedLogo = logo?.startsWith('/') ? logo : `/${logo}`;
+  const [imgSrc, setImgSrc] = useState(normalizedLogo || '/default-logo.png');
+
   return (
     <Box
       p="md"
@@ -66,7 +70,13 @@ const JobCard: FC<JobCardProps> = ({
             justifyContent: 'center',
           }}
         >
-          <Image src={logo} width={50} height={50} alt="Company Logo" />
+          <Image
+            src={imgSrc}
+            width={50}
+            height={50}
+            alt="Company Logo"
+            onError={() => setImgSrc('/default-logo.png')}
+          />
         </Box>
 
         <Text
@@ -91,7 +101,6 @@ const JobCard: FC<JobCardProps> = ({
         {title}
       </Title>
 
-      {/* KEEP IN ONE LINE */}
       <Group
         gap={16}
         mb="sm"
